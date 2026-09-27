@@ -1,12 +1,11 @@
 from flask import Flask, request, jsonify
-import pickle
+import joblib
 import numpy as np
 
 app = Flask(__name__)
 
 # Load the trained heatwave model
-with open("model/heatwave_model.pkl", "rb") as file:
-    model = pickle.load(file)
+model = joblib.load("model/heatwave_model.pkl")
 
 
 @app.route("/")
